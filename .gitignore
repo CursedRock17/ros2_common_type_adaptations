@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Extras in case
+[Bb]uild
+install
+log
+.cache
