@@ -13,13 +13,15 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
-set(PUB_HEADERS
-  include/std_msgs_type_adaptations/StringTypeAdapter.hpp
-  )
+file(GLOB INCLUDES ${PROJECT_SOURCE_DIR}/include/std_msgs_type_adaptations/*.hpp)
+
+set(PUB_HEADERS ${INCLUDES})
+
+message(${INCLUDES})
 
 add_library(STD_MSGS_TYPE_ADAPTER SHARED
   src/test.cpp
-  )
+)
 
 set_target_properties(STD_MSGS_TYPE_ADAPTER PROPERTIES PUBLIC_HEADER "${PUB_HEADERS}")
 target_include_directories(STD_MSGS_TYPE_ADAPTER PUBLIC include)
@@ -27,7 +29,7 @@ target_include_directories(STD_MSGS_TYPE_ADAPTER PUBLIC include)
 install(
   TARGETS STD_MSGS_TYPE_ADAPTER
   DESTINATION lib/{PROJECT_NAME}
-  )
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
