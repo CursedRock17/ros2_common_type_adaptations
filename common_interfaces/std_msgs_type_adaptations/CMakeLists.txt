@@ -12,19 +12,17 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(builtin_interfaces REQUIRED)
+find_package(builtin_interfaces_type_adaptations REQUIRED)
 
 file(GLOB INCLUDES ${PROJECT_SOURCE_DIR}/include/std_msgs_type_adaptations/*.hpp)
 
 set(PUB_HEADERS ${INCLUDES})
 
-message(${INCLUDES})
-
-add_library(STD_MSGS_TYPE_ADAPTER SHARED
-  src/test.cpp
-)
+add_library(STD_MSGS_TYPE_ADAPTER INTERFACE)
 
 set_target_properties(STD_MSGS_TYPE_ADAPTER PROPERTIES PUBLIC_HEADER "${PUB_HEADERS}")
-target_include_directories(STD_MSGS_TYPE_ADAPTER PUBLIC include)
+target_include_directories(STD_MSGS_TYPE_ADAPTER INTERFACE include)
 
 install(
   TARGETS STD_MSGS_TYPE_ADAPTER
