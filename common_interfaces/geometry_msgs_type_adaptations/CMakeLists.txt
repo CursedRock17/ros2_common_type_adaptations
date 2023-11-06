@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.8)
 
 project(geometry_msgs_type_adaptations)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
@@ -9,6 +12,22 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(std_msgs_type_adaptations REQUIRED)
+
+file(GLOB INCLUDES ${PROJECT_SOURCE_DIR}/include/geometry_msgs_type_adaptations/*.hpp)
+
+set(PUB_HEADERS ${INCLUDES})
+
+add_library(GEOMETRY_MSGS_TYPE_ADAPTER INTERFACE)
+
+set_target_properties(GEOMETRY_MSGS_TYPE_ADAPTER PROPERTIES PUBLIC_HEADER "${PUB_HEADERS}")
+target_include_directories(GEOMETRY_MSGS_TYPE_ADAPTER INTERFACE include)
+
+install(
+  TARGETS GEOMETRY_MSGS_TYPE_ADAPTER
+  DESTINATION lib/{PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
