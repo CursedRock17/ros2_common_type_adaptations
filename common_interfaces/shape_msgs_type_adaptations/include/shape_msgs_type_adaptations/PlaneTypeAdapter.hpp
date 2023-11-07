@@ -4,17 +4,17 @@
 #include <array>
 
 #include "rclcpp/type_adapter.hpp"
-#include "std_msgs/msg/plane.hpp"
+#include "shape_msgs/msg/plane.hpp"
 
 template<>
 struct rclcpp::TypeAdapter<
    std::array<double, 4>,
-   std_msgs::msg::Plane
+   shape_msgs::msg::Plane
 >
 {
   using is_specialized = std::true_type;
   using custom_type = std::array<double, 4>;
-  using ros_message_type = std_msgs::msg::Plane;
+  using ros_message_type = shape_msgs::msg::Plane;
 
   static
   void

@@ -11,6 +11,8 @@
 
   <depend>rclcpp</depend>
   <depend>shape_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>geometry_msgs_type_adaptations</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

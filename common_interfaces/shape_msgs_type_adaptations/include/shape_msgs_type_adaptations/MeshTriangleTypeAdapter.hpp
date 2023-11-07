@@ -1,20 +1,20 @@
-#ifndef STD_MSGS_TYPE_ADAPTATIONS__MESHTRIANGLETYPEADAPTER_HPP_
-#define STD_MSGS_TYPE_ADAPTATIONS__MESHTRIANGLETYPEADAPTER_HPP_
+#ifndef SHAPE_MSGS_TYPE_ADAPTATIONS__MESHTRIANGLETYPEADAPTER_HPP_
+#define SHAPE_MSGS_TYPE_ADAPTATIONS__MESHTRIANGLETYPEADAPTER_HPP_
 
 #include <array>
 
 #include "rclcpp/type_adapter.hpp"
-#include "std_msgs/msg/mesh_triangle.hpp"
+#include "shape_msgs/msg/mesh_triangle.hpp"
 
 template<>
 struct rclcpp::TypeAdapter<
    std::array<unsigned long, 3>,
-   std_msgs::msg::MeshTriangle
+   shape_msgs::msg::MeshTriangle
 >
 {
   using is_specialized = std::true_type;
   using custom_type = std::array<unsigned long, 3>;
-  using ros_message_type = std_msgs::msg::MeshTriangle;
+  using ros_message_type = shape_msgs::msg::MeshTriangle;
 
   static
   void
@@ -39,4 +39,4 @@ struct rclcpp::TypeAdapter<
   }
 };
 
-#endif  // STD_MSGS_TYPE_ADAPTATIONS__MESHTRIANGLETYPEADAPTER_HPP_
+#endif  // SHAPE_MSGS_TYPE_ADAPTATIONS__MESHTRIANGLETYPEADAPTER_HPP_
