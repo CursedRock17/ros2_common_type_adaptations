@@ -11,6 +11,8 @@
 
   <depend>rclcpp</depend>
   <depend>actionlib_msgs</depend>
+  <depend>builtin_interfaces</depend>
+  <depend>builtin_interfaces_type_adaptations</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
