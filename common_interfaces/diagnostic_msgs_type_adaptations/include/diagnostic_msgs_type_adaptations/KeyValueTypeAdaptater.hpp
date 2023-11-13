@@ -4,23 +4,23 @@
 #include <string>
 
 #include "rclcpp/type_adapter.hpp"
-#include "std_msgs/msg/key_value.hpp"
+#include "diagnostic_msgs/msg/key_value.hpp"
 
 struct KeyValue
 {
   std::string key;
   std::string value;
-}
+};
 
 template<>
 struct rclcpp::TypeAdapter<
    KeyValue,
-   std_msgs::msg::KeyValue
+   diagnostic_msgs::msg::KeyValue
 >
 {
   using is_specialized = std::true_type;
   using custom_type = KeyValue;
-  using ros_message_type = std_msgs::msg::KeyValue;
+  using ros_message_type = diagnostic_msgs::msg::KeyValue;
 
   static
   void
