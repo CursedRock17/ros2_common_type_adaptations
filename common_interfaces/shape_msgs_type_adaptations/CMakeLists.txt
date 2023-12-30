@@ -12,7 +12,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(shape_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(geometry_msgs_type_adapters REQUIRED)
+find_package(geometry_msgs_type_adaptations REQUIRED)
 
 file(GLOB INCLUDES ${PROJECT_SOURCE_DIR}/include/shape_msgs_type_adaptations/*.hpp)
 

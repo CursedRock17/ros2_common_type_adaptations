@@ -13,6 +13,8 @@
   <depend>visualization_msgs</depend>
   <depend>std_msgs</depend>
   <depend>std_msgs_type_adaptations</depend>
+  <depend>sensor_msgs</depend>
+  <depend>sensor_msgs_type_adaptations</depend>
   <depend>geometry_msgs</depend>
   <depend>geometry_msgs_type_adaptations</depend>
   <depend>builtin_interfaces</depend>

@@ -11,6 +11,8 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(std_msgs_type_adaptations REQUIRED)
 
 file(GLOB INCLUDES ${PROJECT_SOURCE_DIR}/include/sensor_msgs_type_adaptations/*.hpp)
 

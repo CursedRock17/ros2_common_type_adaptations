@@ -19,9 +19,14 @@
 #include "std_msgs_type_adaptations/include/HeaderTypeAdapter.hpp"
 #include "std_msgs_type_adaptations/include/ColorRGBATypeAdapter.hpp"
 
+#include "sensor_msgs/msg/compressed_image.hpp"
+#include "sensor_msgs_type_adaptations/include/CompressedImageTypeAdapter.hpp"
+
 #include "geometry_msgs/msg/point.hpp"
+#include "geometry_msgs/msg/pose.hpp"
 #include "geometry_msgs/msg/vector3.hpp"
 #include "geometry_msgs_type_adaptations/include/PointTypeAdapter.hpp"
+#include "geometry_msgs_type_adaptations/include/PoseTypeAdapter.hpp"
 #include "geometry_msgs_type_adaptations/include/Vector3TypeAdapter.hpp"
 
 #include "builtin_interfaces/msg/duration.hpp"
@@ -33,6 +38,11 @@ using PointTypeAdapter = rclcpp::TypeAdapter<Point, geometry_msgs::msg::Point>;
 using PoseTypeAdapter = rclcpp::TypeAdapter<Pose, geometry_msgs::msg::Pose>;
 using Vector3TypeAdapter = rclcpp::TypeAdapter<Vector3, geometry_msgs::msg::Vector3>;
 using DurationTypeAdapter = rclcpp::TypeAdapter<Duration, builtin_interfaces::msg::Duration>;
+
+using CompressedImageTypeAdapter = rclcpp::TypeAdapter<CompressedImage, sensor_msgs::msg::CompressedImage>;
+
+using UVCoordinateTypeAdapter = rclcpp::TypeAdapter<UVCoordinate, visualization_msgs::msg::UVCoordinate>;
+using MeshFileTypeAdapter = rclcpp::TypeAdapter<MeshFile, visualization_msgs::msg::MeshFile>;
 
 struct Marker
 {
@@ -48,6 +58,7 @@ struct Marker
   constexpr static long TEXT_VIEW_FACING=9;
   constexpr static long MESH_RESOURCE=10;
   constexpr static long TRIANGLE_LIST=11;
+
   constexpr static long ADD=0;
   constexpr static long MODIFY=0;
   constexpr static long DELETE=2;
@@ -68,7 +79,14 @@ struct Marker
   std::vector<ColorRGBA> colors;
 
   std::string texture_resource;
+  CompressedImage texture;
+  std::vector<UVCoordinate> uv_coordinates;
 
+  std::string text;
+
+  std::string mesh_resource;
+  MeshFile mesh_file;
+  bool mesh_use_embedded_materials;
 };
 
 
@@ -107,6 +125,20 @@ struct rclcpp::TypeAdapter<
     {
       ColorRGBATypeAdapter::convert_to_ros_message(source.colors.at(i), destination.colors[i]);
     }
+
+    destination.texture_resource = source.texture_resource;
+    CompressedImageTypeAdapter::convert_to_ros_message(source.texture, destination.texture);
+    for (int i = 0; i < source.uv_coordinates.size(); i++)
+    {
+      UVCoordinateTypeAdapter::convert_to_ros_message(source.uv_coordinates.at(i), destination.uv_coordinates[i]);
+    }
+
+    destination.text = source.text;
+
+    destination.mesh_resource = source.mesh_resource;
+    MeshFileTypeAdapter::convert_to_ros_message(source.mesh_file, destination.mesh_file);
+    destination.mesh_use_embedded_materials = source.mesh_use_embedded_materials;
+
   }
 
   static
@@ -134,6 +166,19 @@ struct rclcpp::TypeAdapter<
     {
       ColorRGBATypeAdapter::convert_to_custom(source.colors[i], destination.colors.at(i));
     }
+
+    destination.texture_resource = source.texture_resource;
+    CompressedImageTypeAdapter::convert_to_custom(source.texture, destination.texture);
+    for (int i = 0; i < sizeof(source.uv_coordinates)/sizeof(*source.uv_coordinates); i++)
+    {
+      UVCoordinateTypeAdapter::convert_to_custom(source.uv_coordinates[i], destination.uv_coordinates.at(i));
+    }
+
+    destination.text = source.text;
+
+    destination.mesh_resource = source.mesh_resource;
+    MeshFileTypeAdapter::convert_to_custom(source.mesh_file, destination.mesh_file);
+    destination.mesh_use_embedded_materials = source.mesh_use_embedded_materials;
   }
 };
 
