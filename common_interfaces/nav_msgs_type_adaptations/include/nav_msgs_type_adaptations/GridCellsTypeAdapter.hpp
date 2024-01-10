@@ -56,7 +56,7 @@ struct rclcpp::TypeAdapter<
     HeaderTypeAdapter::convert_to_custom(source.header, destination.header);
     destination.cell_width = source.cell_width;
     destination.cell_height = source.cell_height;
-    for (int i = 0; i < sizeof(source.cells)/sizeof(*source.cells); i++)
+    for (int i = 0; i < source.cells.size(); i++)
     {
       PointTypeAdapter::convert_to_custom(source.cells[i], destination.cells.at(i));
     }

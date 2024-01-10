@@ -40,11 +40,11 @@ struct rclcpp::TypeAdapter<
   {
     for (int i = 0; i < source.triangles.size(); i++)
     {
-      MeshTriangleAdapter::convert_to_ros_message(source.at(i), destination.triangles[i]);
+      MeshTriangleAdapter::convert_to_ros_message(source.triangles.at(i), destination.triangles[i]);
     }
     for (int i = 0; i < source.vertices.size(); i++)
     {
-      PointAdapter::convert_to_ros_message(source.at(i), destination.vertices[i]);
+      PointAdapter::convert_to_ros_message(source.vertices.at(i), destination.vertices[i]);
     }
   }
 
@@ -54,13 +54,13 @@ struct rclcpp::TypeAdapter<
     const ros_message_type & source,
     custom_type & destination)
   {
-    for (int i = 0; i < sizeof(source.triangles) / sizeof(*source.triangles); i++)
+    for (int i = 0; i < source.triangles.size(); i++)
     {
-      MeshTriangleAdapter::convert_to_custom(source.triangles[i], destination.at(i));
+      MeshTriangleAdapter::convert_to_custom(source.triangles[i], destination.triangles.at(i));
     }
-    for (int i = 0; i < sizeof(source.vertices) / sizeof(*source.vertices); i++)
+    for (int i = 0; i < source.vertices.size(); i++)
     {
-      PointAdapter::convert_to_custom(source.vertices[i], destination.at(i));
+      PointAdapter::convert_to_custom(source.vertices[i], destination.triangles.at(i));
     }
   }
 };

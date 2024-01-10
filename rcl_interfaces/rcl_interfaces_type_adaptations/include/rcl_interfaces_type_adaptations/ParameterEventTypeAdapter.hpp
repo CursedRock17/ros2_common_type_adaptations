@@ -67,17 +67,17 @@ struct rclcpp::TypeAdapter<
   {
     destination.node = source.node;
     TimeTypeAdapter::convert_to_custom(source.stamp, destination.stamp);
-    for (int i = 0; i < sizeof(source.new_parameters)/sizeof(*source.new_parameters); i++)
+    for (int i = 0; i < source.new_parameters.size(); i++)
     {
       ParameterTypeAdapter::convert_to_custom(
         source.new_parameters[i], destination.new_parameters.at(i));
     }
-    for (int i = 0; i < sizeof(source.changed_parameters)/sizeof(*source.changed_parameters); i++)
+    for (int i = 0; i < source.changed_parameters.size(); i++)
     {
       ParameterTypeAdapter::convert_to_custom(
         source.changed_parameters[i], destination.changed_parameters.at(i));
     }
-    for (int i = 0; i < sizeof(source.deleted_parameters)/sizeof(*source.deleted_parameters); i++)
+    for (int i = 0; i < source.deleted_parameters.size(); i++)
     {
       ParameterTypeAdapter::convert_to_custom(
         source.deleted_parameters[i], destination.deleted_parameters.at(i));

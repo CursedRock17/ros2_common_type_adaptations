@@ -50,7 +50,7 @@ struct rclcpp::TypeAdapter<
     custom_type & destination)
   {
     HeaderTypeAdapter::convert_to_custom(source.header, destination.header);
-    for (int i = 0; i < sizeof(source.poses)/sizeof(*source.poses); i++)
+    for (int i = 0; i < source.poses.size(); i++)
     {
       PoseStampedTypeAdapter::convert_to_custom(source.poses[i], destination.poses.at(i));
     }

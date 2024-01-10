@@ -52,7 +52,7 @@ struct rclcpp::TypeAdapter<
   {
     HeaderTypeAdapter::convert_to_custom(source.header, destination.header);
     destination.format = source.format;
-    for (int i = 0; i < sizeof(source.data)/sizeof(*source.data); i++)
+    for (int i = 0; i < source.data.size(); i++)
     {
       destination.data.at(i) = source.data[i];
     }

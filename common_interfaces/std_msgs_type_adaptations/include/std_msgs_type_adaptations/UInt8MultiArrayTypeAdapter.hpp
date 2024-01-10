@@ -37,7 +37,7 @@ struct rclcpp::TypeAdapter<
     MultiArrayLayoutAdapter::convert_to_ros_message(source.layout, destination.layout);
 
     destination.layout = source.layout;
-    for(int i = 0; i < sizeof(destination.data)/sizeof(*destination.data); i++)
+    for(int i = 0; i < souce.data.size(); i++)
     {
       destination.data[i] = source.data[i];
     }
@@ -52,7 +52,7 @@ struct rclcpp::TypeAdapter<
     MultiArrayLayoutAdapter::convert_to_custom_message(source.layout, destination.layout);
 
     destination.layout = source.layout;
-    for(int i = 0; i < sizeof(source.data)/sizeof(*source.data); i++)
+    for(int i = 0; i < source.data.size(); i++)
     {
       destination.data[i] = source.data[i];
     }

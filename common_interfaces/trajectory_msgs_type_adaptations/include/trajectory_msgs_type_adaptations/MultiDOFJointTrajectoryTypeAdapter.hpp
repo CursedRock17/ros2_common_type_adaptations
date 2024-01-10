@@ -58,11 +58,11 @@ struct rclcpp::TypeAdapter<
     custom_type & destination)
   {
     HeaderAdapter::convert_to_custom(source.header, destination.header);
-    for (int i = 0; i < sizeof(source.joint_names)/sizeof(*source.joint_names); i++)
+    for (int i = 0; i < source.joint_names.size(); i++)
     {
       destination.joint_names.at(i) = source.joint_names[i];
     }
-    for (int i = 0; i < sizeof(source.points)/sizeof(*source.points); i++)
+    for (int i = 0; i < source.points.size(); i++)
     {
       MultiDOFJointTrajectoryPointAdapter::convert_to_custom(destination.points.at(i), source.points[i]);
     }

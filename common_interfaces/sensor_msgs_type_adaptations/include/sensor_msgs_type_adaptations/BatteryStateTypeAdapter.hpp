@@ -123,12 +123,12 @@ struct rclcpp::TypeAdapter<
     destination.power_supply_technology = source.power_supply_technology;
     destination.present = source.present;
 
-    for (int i = 0; i < sizeof(source.cell_voltage)/sizeof(*source.cell_voltage); i++)
+    for (int i = 0; i < source.cell_voltage.size(); i++)
     {
       destination.cell_voltage.at(i) = source.cell_voltage[i];
     }
 
-    for (int i = 0; i < sizeof(source.cell_temperature)/sizeof(*source.cell_temperature); i++)
+    for (int i = 0; i < source.cell_temperature.size(); i++)
     {
       destination.cell_temperature.at(i) = source.cell_temperature[i];
     }

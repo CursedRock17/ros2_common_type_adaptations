@@ -87,12 +87,12 @@ struct rclcpp::TypeAdapter<
     destination.scale = source.scale;
 
 
-    for (int i = 0; i < sizeof(source.menu_entries)/sizeof(*source.menu_entries); i++)
+    for (int i = 0; i < source.menu_entries.size(); i++)
     {
       MenuEntryTypeAdapter::convert_to_custom(source.menu_entries[i], destination.menu_entries.at(i));
     }
 
-    for (int i = 0; i < sizeof(source.controls)/sizeof(*source.controls); i++)
+    for (int i = 0; i < source.controls.size(); i++)
     {
       InteractiveMarkerControlTypeAdapter::convert_to_custom(source.controls[i], destination.controls.at(i));
     }

@@ -94,7 +94,7 @@ struct rclcpp::TypeAdapter<
     destination.interaction_mode = source.interaction_mode;
     destination.always_visible = source.always_visible
 
-    for (int i = 0; i < sizeof(source.markers)/sizeof(*source.markers); i++)
+    for (int i = 0; i < source.markers.size(); i++)
     {
       MarkerTypeAdapter::convert_to_custom(source.markers[i], destination.markers.at(i));
     }

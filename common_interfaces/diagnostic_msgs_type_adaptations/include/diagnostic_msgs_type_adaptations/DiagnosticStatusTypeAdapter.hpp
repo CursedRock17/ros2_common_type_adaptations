@@ -65,9 +65,9 @@ struct rclcpp::TypeAdapter<
     destination.message = source.message;
     destination.hardware_id = source.hardware_id;
 
-    for (int i = 0; i < sizeof(source.values)/sizeof(*source.values); i++)
+    for (int i = 0; i < source.values.size(); i++)
     {
-      KeyValueTypeAdaptater::convert_to_custom(source.values.[i], destination.values.at(i));
+      KeyValueTypeAdaptater::convert_to_custom(source.values[i], destination.values.at(i));
     }
   }
 };

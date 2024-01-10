@@ -70,7 +70,7 @@ struct rclcpp::TypeAdapter<
     custom_type & destination)
   {
     destination.type = source.type;
-    for (int i = 0; i < sizeof(source.dimensions)/sizeof(*source.dimensions); i++)
+    for (int i = 0; i < source.dimensions.size(); i++)
     {
       destination.dimensions.at(i) = source.dimensions[i];
     }

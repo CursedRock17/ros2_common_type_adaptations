@@ -80,17 +80,17 @@ struct rclcpp::TypeAdapter<
     destination.seq_num = source.seq_num;
     destination.type = source.type;
 
-    for (int i = 0; i < sizeof(source.markers)/sizeof(*source.markers); i++)
+    for (int i = 0; i < source.markers.size(); i++)
     {
       InteractiveMarkerTypeAdapter::convert_to_custom(source.markers[i], destination.markers.at(i));
     }
 
-    for (int i = 0; i < sizeof(source.poses)/sizeof(*source.poses); i++)
+    for (int i = 0; i < source.poses.size(); i++)
     {
       InteractiveMarkerPoseTypeAdapter::convert_to_custom(source.poses[i], destination.poses.at(i));
     }
 
-    for (int i = 0; i < sizeof(source.erases)/sizeof(*source.erases); i++)
+    for (int i = 0; i < source.erases.size(); i++)
     {
       destination.erases.at(i) = destination.erases[i];
     }

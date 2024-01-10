@@ -53,7 +53,7 @@ struct rclcpp::TypeAdapter<
   {
     HeaderTypeAdapter::convert_to_custom(source.header, destination.header);
     MapTypeAdapter::convert_to_custom(source.info, destination.info);
-    for (int i = 0; i < sizeof(source.data)/sizeof(*source.data); i++)
+    for (int i = 0; i < source.data.size(); i++)
     {
       destination.data.at(i) = source.data[i];
     }

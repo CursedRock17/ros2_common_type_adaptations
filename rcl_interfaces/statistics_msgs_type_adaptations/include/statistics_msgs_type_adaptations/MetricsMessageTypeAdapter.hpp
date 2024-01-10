@@ -71,7 +71,7 @@ struct rclcpp::TypeAdapter<
     TimeAdapter::convert_to_custom(source.window_start, destination.window_start);
     TimeAdapter::convert_to_custom(source.window_stop, destination.window_stop);
 
-    for (int i =  0; i < sizeof(source.statistics)/sizeof(*source.statistics); i++)
+    for (int i =  0; i < source.statistics.size(); i++)
     {
       StatisticDataPointAdapter::convert_to_custom(
         source.statistics[i], destination.statistics.at(i);

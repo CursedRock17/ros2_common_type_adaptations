@@ -158,18 +158,18 @@ struct rclcpp::TypeAdapter<
     DurationTypeAdapter::convert_to_custom(source.lifetime, destination.lifetime);
     destination.frame_locked = source.frame_locked;
 
-    for (int i = 0; i < sizeof(source.points)/sizeof(*source.points); i++)
+    for (int i = 0; i < source.points.size(); i++)
     {
       PointTypeAdapter::convert_to_custom(source.points[i], destination.points.at(i));
     }
-    for (int i = 0; i < sizeof(source.colors)/sizeof(*source.colors); i++)
+    for (int i = 0; i < source.colors.size(); i++)
     {
       ColorRGBATypeAdapter::convert_to_custom(source.colors[i], destination.colors.at(i));
     }
 
     destination.texture_resource = source.texture_resource;
     CompressedImageTypeAdapter::convert_to_custom(source.texture, destination.texture);
-    for (int i = 0; i < sizeof(source.uv_coordinates)/sizeof(*source.uv_coordinates); i++)
+    for (int i = 0; i < source.uv_coordinates.size(); i++)
     {
       UVCoordinateTypeAdapter::convert_to_custom(source.uv_coordinates[i], destination.uv_coordinates.at(i));
     }

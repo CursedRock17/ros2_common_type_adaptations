@@ -109,11 +109,11 @@ struct rclcpp::TypeAdapter<
     ColorRGBATypeAdapter::convert_to_custom(source.fill_color, destination.fill_color);
     DurationTypeAdapter::convert_to_custom(source.lifetime, destination.lifetime);
 
-    for (int i = 0; i < sizeof(source.points)/sizeof(*source.points); i++)
+    for (int i = 0; i < source.points.size(); i++)
     {
       PointTypeAdapter::convert_to_custom(source.points[i], destination.points.at(i));
     }
-    for (int i = 0; i < sizeof(source.outline_colors)/sizeof(*source.outline_colors); i++)
+    for (int i = 0; i < source.outline_colors.size(); i++)
     {
       ColorRGBATypeAdapter::convert_to_custom(source.outline_colors[i], destination.outline_colors.at(i));
     }

@@ -75,23 +75,23 @@ struct rclcpp::TypeAdapter<
     destination.integer_value = source.integer_value;
     destination.double_value = source.double_value;
     destination.string_value = source.string_value;
-    for (int i = 0; i < sizeof(source.byte_array_value)/sizeof(*source.byte_array_value); i++)
+    for (int i = 0; i < source.byte_array_values.size(); i++)
     {
       destination.byte_array_value.at(i) = source.byte_array_value[i];
     }
-    for (int i = 0; i < sizeof(source.bool_array_value)/sizeof(*source.bool_array_value); i++)
+    for (int i = 0; i < source.bool_array_value.size(); i++)
     {
       destination.bool_array_value.at(i) = source.bool_array_value[i];
     }
-    for (int i = 0; i < sizeof(source.integer_array_value)/sizeof(*source.integer_array_value); i++)
+    for (int i = 0; i < source.integer_array_value.size(); i++)
     {
       destination.integer_array_value.at(i) = source.integer_array_value[i];
     }
-    for (int i = 0; i < sizeof(source.double_array_value)/sizeof(*source.double_array_value); i++)
+    for (int i = 0; i < source.double_array_value.size(); i++)
     {
       destination.double_array_value.at(i) = source.double_array_value[i];
     }
-    for (int i = 0; i < sizeof(source.string_array_value)/sizeof(*source.string_array_value); i++)
+    for (int i = 0; i < string_array_value.size(); i++)
     {
       destination.string_array_value.at(i) = source.string_array_value[i];
     }

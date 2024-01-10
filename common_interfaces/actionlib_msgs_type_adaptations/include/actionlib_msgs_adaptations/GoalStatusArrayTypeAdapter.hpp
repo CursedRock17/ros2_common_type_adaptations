@@ -48,7 +48,7 @@ struct rclcpp::TypeAdapter<
     const ros_message_type & source,
     custom_type & destination)
   {
-    for (int i = 0; i < sizeof(source.status_list)/sizeof(*source.status_list); i++)
+    for (int i = 0; i < source.status_list.size(); i++)
     {
       GoalStatusAdapter::convert_to_custom(source.status_list[i], destination.status_list.at(i));
     }

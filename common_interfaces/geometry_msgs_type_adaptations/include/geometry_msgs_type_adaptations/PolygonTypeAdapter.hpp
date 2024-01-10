@@ -25,9 +25,9 @@ struct rclcpp::TypeAdapter<
     const custom_type & source,
     ros_message_type & destination)
   {
-    for (int i = 0; i < source.size(); i++)
+    for (int i = 0; i < source.points.size(); i++)
     {
-      destination.points[i] = source.at(i);
+      destination.points[i] = source.points.at(i);
     }
   }
 
@@ -37,9 +37,9 @@ struct rclcpp::TypeAdapter<
     const ros_message_type & source,
     custom_type & destination)
   {
-    for (int i  = 0; i < sizeof(destination.points) / sizeof(*destination.points); i++)
+    for (int i  = 0; i < source.points.size(); i++)
     {
-      destination.at(i) = source.points[i];
+      destination.points.at(i) = source.points[i];
     }
   }
 };

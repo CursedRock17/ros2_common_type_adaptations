@@ -62,15 +62,15 @@ struct rclcpp::TypeAdapter<
     const ros_message_type & source,
     custom_type & destination)
   {
-    for (int i = 0; i < sizeof(source.transforms)/sizeof(*source.transforms); i++)
+    for (int i = 0; i < source.transforms.size(); i++)
     {
       TransformAdapter::convert_to_custom(source.transforms[i], destination.transforms.at(i));
     }
-    for (int i = 0; i < sizeof(source.velocities)/sizeof(*source.velocities); i++)
+    for (int i = 0; i < source.velocities.size(); i++)
     {
       TwistAdapter::convert_to_custom(source.velocities[i], destination.velocities.at(i));
     }
-    for (int i = 0; i < sizeof(source.accelerations)/sizeof(*source.accelerations); i++)
+    for (int i = 0; i < source.accelerations.size(); i++)
     {
       TwistAdapter::convert_to_custom(source.accelerations[i], destination.accelerations.at(i));
     }

@@ -44,7 +44,7 @@ struct rclcpp::TypeAdapter<
     custom_type & destination)
   {
     destination.filename = source.filename;
-    for (int i = 0; i < sizeof(source.data)/sizeof(*source.data); i++)
+    for (int i = 0; i < source.data.size(); i++)
     {
       destination.data.at(i) = source.data[i];
     }

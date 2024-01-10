@@ -50,9 +50,9 @@ struct rclcpp::TypeAdapter<
     custom_type & destination)
   {
     HeaderTypeAdapter::convert_to_custom(source.header, destination.header);
-    for (int i = 0; i < sizeof(source.status)/sizeof(*source.status); i++)
+    for (int i = 0; i < source.status.size(); i++)
     {
-      DiagnosticStatusTypeAdaptater::convert_to_custom(source.status.[i], destination.status.at(i));
+      DiagnosticStatusTypeAdaptater::convert_to_custom(source.status[i], destination.status.at(i));
     }
   }
 };

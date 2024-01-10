@@ -61,19 +61,19 @@ struct rclcpp::TypeAdapter<
     const ros_message_type & source,
     custom_type & destination)
   {
-    for (int i = 0; i < sizeof(source.positions)/sizeof(*source.positions); i++)
+    for (int i = 0; i < source.positions.size(); i++)
     {
       destination.positions.at(i) = source.positions[i];
     }
-    for (int i = 0; i < sizeof(source.velocities)/sizeof(*source.velocities); i++)
+    for (int i = 0; i < source.velocities.size(); i++)
     {
       destination.velocities.at(i) = source.velocities[i];
     }
-    for (int i = 0; i < sizeof(source.accelerations)/sizeof(*source.accelerations); i++)
+    for (int i = 0; i < source.accelerations.size(); i++)
     {
       destination.accelerations.at(i) = source.accelerations[i];
     }
-    for (int i = 0; i < sizeof(source.effort)/sizeof(*source.effort); i++)
+    for (int i = 0; i < source.effort.size(); i++)
     {
       destination.effort.at(i) = source.effort[i];
     }

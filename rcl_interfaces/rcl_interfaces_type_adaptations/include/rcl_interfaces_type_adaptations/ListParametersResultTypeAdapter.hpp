@@ -45,11 +45,11 @@ struct rclcpp::TypeAdapter<
     const ros_message_type & source,
     custom_type & destination)
   {
-    for (int i = 0; i < sizeof(source.names)/sizeof(*source.names); i++)
+    for (int i = 0; i < source.names.size(); i++)
     {
       destination.names.at(i) = source.names[i];
     }
-    for (int i = 0; i < sizeof(source.prefixes)/sizeof(*source.prefixes); i++)
+    for (int i = 0; i < source.prefixes.size(); i++)
     {
       destination.prefixes.at(i) = source.prefixes[i];
     }

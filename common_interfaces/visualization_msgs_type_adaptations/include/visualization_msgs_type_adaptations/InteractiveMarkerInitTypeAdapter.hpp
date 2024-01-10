@@ -52,7 +52,7 @@ struct rclcpp::TypeAdapter<
   {
     destination.server_id = source.server_id;
     destination.seq_num = source.seq_num;
-    for (int i = 0; i < sizeof(source.markers)/sizeof(*source.markers); i++)
+    for (int i = 0; i < source.markers.size(); i++)
     {
       InteractiveMarkerTypeAdapter::convert_to_custom(source.markers[i], destination.markers.at(i));
     }

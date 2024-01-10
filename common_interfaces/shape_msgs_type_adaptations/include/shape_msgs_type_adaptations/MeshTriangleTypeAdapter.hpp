@@ -22,9 +22,9 @@ struct rclcpp::TypeAdapter<
     const custom_type & source,
     ros_message_type & destination)
   {
-    destination.vertex_indices[0] = source.at(0);
-    destination.vertex_indices[1] = source.at(1);
-    destination.vertex_indices[2] = source.at(2);
+    destination.vertex_indices[0] = source.vertex_indices.at(0);
+    destination.vertex_indices[1] = source.vertex_indices.at(1);
+    destination.vertex_indices[2] = source.vertex_indices.at(2);
   }
 
   static
@@ -33,9 +33,9 @@ struct rclcpp::TypeAdapter<
     const ros_message_type & source,
     custom_type & destination)
   {
-    destination.at(0) = source.vertex_indices[0];
-    destination.at(1) = source.vertex_indices[1];
-    destination.at(2) = source.vertex_indices[2];
+    destination.vertex_indices.at(0) = source.vertex_indices[0];
+    destination.vertex_indices.at(1) = source.vertex_indices[1];
+    destination.vertex_indices.at(2) = source.vertex_indices[2];
   }
 };
 
